@@ -13,5 +13,5 @@ sails lift
 http://localhost:1337
 
 ## run tests
-./node_modules/.bin/mocha test/bootstrap.test.js test/**/*
+./node_modules/.bin/mocha test/bootstrap.test.js test/\*\*/\*
 
