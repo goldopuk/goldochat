@@ -1,0 +1,46 @@
+<header>
+	<a href="/home/leave?id=<%= room.id %>">leave room</a>
+</header>
+
+<h3><%= room.name %></h3>
+
+<h4>Messages</h4>
+<ul id="messages">
+	<% _.each(room.messages, function(message) { %>
+		<li>
+			<span class="username"><%= message.username %> : </span>
+			<span class="message"><%= message.text %></span>
+		</li>
+	<% }) %>
+</ul>
+
+<br>
+<h4>Users in the room</h4>
+<ul id="users">
+	<% _.each(room.users, function(value, username) { %>
+	<li><%= username %></li>
+	<% }) %>
+</ul>
+
+<form action="">
+	<input id="m" autocomplete="off" /><button>Send</button>
+</form>
+
+<script src="/js/dependencies/sails.io.js"></script>
+
+<script>
+
+	var room = <%- JSON.stringify(room) %>;
+	var username = <%- JSON.stringify(req.session.username) %>;
+
+	var socket = io();
+	$('form').submit(function(){
+		socket.emit('chat message', {message: $('#m').val(), roomId: room.id, username: username});
+		$('#m').val('');
+		return false;
+	});
+
+	socket.on('chat message', function(msgObj){
+		$('#messages').append($('<li>').text(msgObj.username + ' : ' + msgObj.message));
+	});
+</script>

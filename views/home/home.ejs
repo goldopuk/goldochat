@@ -1,0 +1,21 @@
+<div class="main">
+
+	<div class="welcome">
+		Bom dia, <%= username %> ! (<a href="/home/logout">logout</a>)
+	</div>
+
+	<div>
+		<h2>Opened rooms</h2>
+		<!--<form action="/home/createroom" method="post">-->
+			<!--<input type="text" name="room-name">-->
+			<!--<input type="submit" value="create room"></input>-->
+		<!--</form>-->
+
+		<ul>
+			<% _.each(rooms, function (room) { %>
+			<a href="/home/chatroom?id=<%= room.id %>"><%= room.name %></a>
+			<% }) %>
+		</ul>
+	</div>
+
+</div>
