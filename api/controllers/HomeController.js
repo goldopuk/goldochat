@@ -7,6 +7,8 @@ module.exports = {
             return res.redirect('/home/login');
         }
 
+        ChatService.init();
+
         var rooms = ChatService.getRooms();
         return res.view({rooms: rooms, username: req.session.username});
     },
@@ -24,18 +26,13 @@ module.exports = {
     },
 
     logout: function (req, res) {
-
         req.session.username = null;
-
         return res.redirect('/');
     },
 
     leave: function (req, res) {
-
         var roomId = req.param('id');
-
         ChatService.leaveRoom(roomId, req.session.username);
-
         return res.redirect('/');
     },
 
@@ -45,10 +42,7 @@ module.exports = {
           return res.redirect('/home/login');
         }
 
-        ChatService.init();
-
         var roomId = req.param('id');
-
         var room = ChatService.getRoom(roomId);
 
         ChatService.joinRoom(roomId, req.session.username);

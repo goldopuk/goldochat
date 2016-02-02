@@ -1,15 +1,19 @@
 <div class="main">
+	<header>
+		<h3 style="text-align: center">Welcome in Goldo Chat Rooms</h3>
+	</header>
 
 	<div class="welcome">
 		Bom dia, <%= username %> ! (<a href="/home/logout">logout</a>)
 	</div>
 
 	<div>
-		<h2>Opened rooms</h2>
+		<h4>Rooms</h4>
 		<!--<form action="/home/createroom" method="post">-->
 			<!--<input type="text" name="room-name">-->
 			<!--<input type="submit" value="create room"></input>-->
 		<!--</form>-->
+		<p>For now, there is just one room available...</p>
 
 		<ul>
 			<% _.each(rooms, function (room) { %>

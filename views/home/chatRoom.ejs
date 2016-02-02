@@ -1,5 +1,5 @@
 <header>
-	<a href="/home/leave?id=<%= room.id %>">leave room</a>
+	<a href="/home/leave?id=<%= room.id %>">Leave room</a>
 </header>
 
 <h3><%= room.name %></h3>
@@ -29,7 +29,6 @@
 <script src="/js/dependencies/sails.io.js"></script>
 
 <script>
-
 	var room = <%- JSON.stringify(room) %>;
 	var username = <%- JSON.stringify(req.session.username) %>;
 

@@ -13,9 +13,5 @@ module.exports.bootstrap = function(cb) {
 
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
-    var room = ChatService.createRoom('Default Room', 'default-room');
-    ChatService.addMessage('Bob', room.id, 'Hello John');
-    ChatService.addMessage('John', room.id, 'Hello Bob');
-    sails.log.info('Bootstraping', room);
     cb();
 };

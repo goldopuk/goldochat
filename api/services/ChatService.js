@@ -8,9 +8,8 @@ module.exports = {
 
     createRoom: function(roomName, roomId) {
 
-        // room already exists
-        if (chatRooms[roomName]) {
-            throw new Error('The room ' + roomName + ' already exists.');
+        if (chatRooms[roomId]) {
+            throw new Error('The room ' + roomId + ' already exists.');
         }
 
         var room = {};
@@ -25,7 +24,7 @@ module.exports = {
     },
 
     getRoom: function (roomId) {
-        if (! chatRooms[roomId]) {
+        if ( ! chatRooms[roomId]) {
             throw new Error('The room ' + roomId + ' does not exists.');
         }
 
@@ -64,6 +63,8 @@ module.exports = {
         }
 
         var self = this;
+
+        self.createRoom('Default Room', 'default-room');
 
         sails.io.on('connection', function(socket){
             console.log('a user connected', socket.id);
